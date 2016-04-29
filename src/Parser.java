@@ -4,7 +4,7 @@ public class Parser {
 
 	private Main main;
 
-	public CLParser(String[] args) {
+	public Parser(String[] args) {
 
 	}
 
