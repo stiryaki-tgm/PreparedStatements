@@ -5,7 +5,7 @@ public class Main {
 
 		System.out.println("Verbindung wird hergestellt...");
 		Parser p = new Parser(args);
-		Connector con = new Connector(p.getHost(), p.getPort(), p.getDatabase(), p.getUser(), p.getPass());
+		Connector con = new Connector(p.getHost(), p.getPort(), p.getDB(), p.getUser(), p.getPassword());
 		con.connect();
 	}
 

@@ -28,6 +28,10 @@ public class Parser {
 		return 0;
 	}
 
+	public String getHost() {
+		return null;
+	}
+
 	public void help() {
 
 	}
