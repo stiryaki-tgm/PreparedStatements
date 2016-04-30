@@ -11,7 +11,7 @@ public class Connector {
 
 	private Main main;
 
-	public void Connector(String host, int port, String database, String user, String password) {
+	public Connector(String host, int port, String database, String user, String password) {
 
 	}
 
