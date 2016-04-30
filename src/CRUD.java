@@ -1,3 +1,6 @@
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class CRUD {
 
 	private PreparedStatement crud;
