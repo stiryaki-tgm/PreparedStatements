@@ -132,6 +132,7 @@ public class Parser {
 
     /**
      * Gibt die Verwendung des Programs, mit ihren Optionen aus.
+     * http://www.programcreek.com/java-api-examples/index.php?api=org.apache.commons.cli.HelpFormatter
      */
     public void help() {
         if (cli.hasOption('h')) {
