@@ -4,10 +4,13 @@ public class Parser {
 
 	private Options opt;
     private CommandLine cli;
+    private HelpFormatter helper;
 
 	public Parser(String[] args) {
-		setUpOptions();
+        helper = new HelpFormatter();
+        setUpOptions();
         parse(args);
+
 
 	}
 
@@ -15,7 +18,7 @@ public class Parser {
     *  Erstellt die Optionen für Parametereingaben
      */
 	public void setUpOptions() {
-
+        opt = new Options();
         opt.addOption(Option.builder("H").argName("hostname").desc("Adresse des Servers").hasArg().longOpt("host")
                 .numberOfArgs(1).build());
         opt.addOption(Option.builder("d").argName("database").desc("Datenbankname").hasArg()
@@ -26,6 +29,8 @@ public class Parser {
                 .numberOfArgs(1).build());
         opt.addOption(Option.builder("p").argName("password").desc("Password des Users").hasArg().longOpt("password")
                 .numberOfArgs(1).build());
+        opt.addOption(Option.builder("h").argName("help").desc("Hile").hasArg().longOpt("help")
+                .numberOfArgs(0).build());
 
 
     }
@@ -42,6 +47,7 @@ public class Parser {
             exp.printStackTrace();
             System.exit(-1);
         }
+        help();
     }
 
     /**
@@ -53,6 +59,7 @@ public class Parser {
             return cli.getOptionValue('d');
         else {
                 System.out.println("Datenbankname fehlt!");
+                printHelper();
                 System.exit(-1);
                 return "";
         }
@@ -68,7 +75,8 @@ public class Parser {
         }
         else {
 
-            System.out.println("Datenbankname fehlt!");
+            System.out.println("User fehlt!");
+            printHelper();
             System.exit(-1);
             return "";
         }
@@ -83,7 +91,8 @@ public class Parser {
             return cli.getOptionValue('p');
         else {
 
-            System.out.println("Datenbankname fehlt!");
+            System.out.println("Password fehlt!");
+            printHelper();
             System.exit(-1);
             return "";
         }
@@ -98,7 +107,8 @@ public class Parser {
             return Integer.parseInt(cli.getOptionValue('P'));
         else {
 
-            System.out.println("Datenbankname fehlt!");
+            System.out.println("Port fehlt!");
+            printHelper();
             System.exit(-1);
             return -1;
         }
@@ -113,18 +123,25 @@ public class Parser {
             return cli.getOptionValue('H');
         else {
 
-            System.out.println("Datenbankname fehlt!");
+            System.out.println("Server-IP fehlt!");
+            printHelper();
             System.exit(-1);
             return "";
         }
 	}
 
     /**
-     *
-     * Muss noch implementiert werden
+     * Gibt die Verwendung des Programs, mit ihren Optionen aus.
      */
     public void help() {
-
+        if (cli.hasOption('h')) {
+            printHelper();
+            System.exit(0);
+        }
 	}
+    public void printHelper()
+    {
+        helper.printHelp("<filename>.jar", opt, true);
+    }
 
 }
