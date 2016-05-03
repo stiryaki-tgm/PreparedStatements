@@ -37,7 +37,7 @@ public class CRUD {
 	}
 
 	/**
-	 * Es führt den Prepared Statement mit einem bestimmten int wert für 
+	 * READ - Es führt den Prepared Statement mit einem bestimmten int wert für 
 	 * die SELECT Abrage.
 	 * @param border definiert welcher wert selektiert werden soll
 	 * @return the ResultSet die auszugebenden Daten
