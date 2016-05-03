@@ -1,10 +1,16 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
+/**
+ * CRUD für CREATE, READ, UPDATE UND DELETE
+ * @author Oezsoy Ahmet 
+ * @version 01.04.2016
+ */
 public class CRUD {
 
 	private PreparedStatement crud;
-
+	
 	private Connector con;
 
 	/**
@@ -66,10 +72,27 @@ public class CRUD {
 		}
 	}
 
+	/**
+	 * UPDATE - Ersetzt den Platzhalter mit den Parametern und führt das Prepared Statement aus.
+	 * @param bez Bezeichnung für das Produkt
+	 * @param gewicht für das Produkt
+	 */
 	public void updateProdukt(String bez, int gewicht) {
-
+		crud = con.prepareStmnt("UPDATE Produkt SET bez = ? WHERE gewicht = ?");
+		try {
+			crud.setString(1, bez);
+			crud.setInt(2, gewicht);
+			crud.execute();
+		} catch (SQLException e) {
+			System.err.println("Das Updaten vom Produkt wurde fehlgeschlagen!");
+			System.out.println(e.getMessage());
+		}
 	}
 
+	/**
+	 * Ersetzt den Platzhalter mit den Parametern und führt das Prepared Statement aus.
+	 * @param key 
+	 */
 	public void deleteProdukt(int key) {
 
 	}
