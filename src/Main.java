@@ -15,7 +15,7 @@ public class Main {
 			//nummer,bezeichnung,gewicht
 			crud.insertProdukt(i,"ProduktNr." + i,1);
 		}
-		System.out.println("Datens√§tze wurden eingetragen!");
+		System.out.println("Datens‰tze wurden eingetragen!");
 	}
 
 }

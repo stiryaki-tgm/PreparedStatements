@@ -10,12 +10,10 @@ public class Parser {
         helper = new HelpFormatter();
         setUpOptions();
         parse(args);
-
-
 	}
 
     /**
-    *  Erstellt die Optionen fÃ¼r Parametereingaben
+     *  Erstellt die Optionen für Parametereingaben
      */
 	public void setUpOptions() {
         opt = new Options();
@@ -32,11 +30,10 @@ public class Parser {
         opt.addOption(Option.builder("h").argName("help").desc("Hile").hasArg().longOpt("help")
                 .numberOfArgs(0).build());
 
-
     }
 
     /**
-    *   Parst die Parameter, mit den vordefinierten Optionen
+     *   Parst die Parameter, mit den vordefinierten Optionen
      */
     private void parse(String[] args)
     {
@@ -144,5 +141,4 @@ public class Parser {
     {
         helper.printHelp("<filename>.jar", opt, true);
     }
-
 }
