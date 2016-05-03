@@ -36,10 +36,20 @@ public class CRUD {
 		}
 	}
 
-	public ResultSet readProdukt(int border) {
-		return null;
+	/**
+	 * Es führt den Prepared Statement mit einem bestimmten int wert für 
+	 * die SELECT Abrage.
+	 * @param border definiert welcher wert selektiert werden soll
+	 * @return the ResultSet die auszugebenden Daten
+	 * @throws SQLException für die Exception aus wenn ein Fehler auftritt
+	 */
+	public ResultSet readProdukt(int border) throws SQLException {
+		crud = con.prepareStmnt("SELECT * FROM Produkt WHERE nummer > ?");
+		crud.setInt(1, border);
+		return crud.executeQuery();
 	}
 
+	
 	public void printProdukt(ResultSet rs) {
 
 	}
