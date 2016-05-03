@@ -90,11 +90,18 @@ public class CRUD {
 	}
 
 	/**
-	 * Ersetzt den Platzhalter mit den Parametern und führt das Prepared Statement aus.
-	 * @param key 
+	 * DELETE - Ersetzt den Platzhalter mit den Parametern und führt das Prepared Statement aus.
+	 * @param key Bezeichnung für das Produkt
 	 */
 	public void deleteProdukt(int key) {
-
+		crud = con.prepareStmnt("DELETE FROM Produkt WHERE bez = ?");
+		try {
+			crud.setString(1, key);
+			delete.execute();
+		} catch (SQLException e) {
+			System.err.println("Löschen eines Produktes fehlgeschlagen!");
+			System.err.println(e.getMessage());
+		}
 	}
 
 }
