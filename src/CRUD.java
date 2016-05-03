@@ -49,9 +49,21 @@ public class CRUD {
 		return crud.executeQuery();
 	}
 
-	
+	/**
+	 * READ - Gibt die Werte vom Resultset aus.
+	 * @param rs der Resultset
+	 */
 	public void printProdukt(ResultSet rs) {
-
+		try {
+			while (rs.next()) {
+				int num = rs.getInt(1);
+				String bez = rs.getString(2);
+				int gewicht = rs.getInt(3);
+				System.out.println(num + " " + bez + " " + gewicht);
+			}
+		} catch (SQLException e) {
+			System.err.println("Ausgabe fehlgeschlagen!");
+		}
 	}
 
 	public void updateProdukt(String bez, int gewicht) {
