@@ -7,12 +7,14 @@ public class CRUD {
 
 	private Connector con;
 
-	private Main main;
-
+	/**
+	 * Konstruktor für die CRUD Operationen
+	 * @param con wird gebraucht für die Verbindung zur Datenbank
+	 */
 	public CRUD(Connector con) {
-
+		this.con = con;
 	}
-
+	
 	public void insertProdukt(int num, String bez, int gewicht) {
 
 	}
