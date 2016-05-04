@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * CRUD für CREATE, READ, UPDATE UND DELETE
+ * CRUD fuer CREATE, READ, UPDATE UND DELETE
  * @author Oezsoy Ahmet 
  * @version 01.04.2016
  */
@@ -14,22 +14,22 @@ public class CRUD {
 	private Connector con;
 
 	/**
-	 * Konstruktor für die CRUD Operationen
-	 * @param con wird gebraucht für die Verbindung zur Datenbank
+	 * Konstruktor fuer die CRUD Operationen
+	 * @param con wird gebraucht fuer die Verbindung zur Datenbank
 	 */
 	public CRUD(Connector con) {
 		this.con = con;
 	}
 	
 	/** 
-	 * CREATE - Eine Methode, dass ein Produkt in die mysql datenbank(schokofabrik) in die Tabelle Produkt einfügt.
+	 * CREATE - Eine Methode, dass ein Produkt in die mysql datenbank(schokofabrik) in die Tabelle Produkt einfuegt.
 	 * @param num die nummer des Produktes
 	 * @param bez die bezeichnung des Produktes
 	 * @param gewicht das gewicht des Produktes
 	 */
 	public void insertProdukt(int num, String bez, int gewicht) {
 		//Erstellen eines Prepared Statements
-		crud = new con.prepareStmnt("INSERT INTO Produkt VALUES(?,?,?)");
+		crud = con.prepareStmnt("INSERT INTO Produkt VALUES(?,?,?)");
 		try{
 			crud.setInt(1, num);
 			crud.setString(2,bez);
@@ -43,11 +43,11 @@ public class CRUD {
 	}
 
 	/**
-	 * READ - Es führt den Prepared Statement mit einem bestimmten int wert für 
+	 * READ - Es fuehrt den Prepared Statement mit einem bestimmten int wert fuer
 	 * die SELECT Abrage.
 	 * @param border definiert welcher wert selektiert werden soll
 	 * @return the ResultSet die auszugebenden Daten
-	 * @throws SQLException für die Exception aus wenn ein Fehler auftritt
+	 * @throws SQLException fuer die Exception aus wenn ein Fehler auftritt
 	 */
 	public ResultSet readProdukt(int border) throws SQLException {
 		crud = con.prepareStmnt("SELECT * FROM Produkt WHERE nummer > ?");
@@ -73,9 +73,9 @@ public class CRUD {
 	}
 
 	/**
-	 * UPDATE - Ersetzt den Platzhalter mit den Parametern und führt das Prepared Statement aus.
-	 * @param bez Bezeichnung für das Produkt
-	 * @param gewicht für das Produkt
+	 * UPDATE - Ersetzt den Platzhalter mit den Parametern und fuehrt das Prepared Statement aus.
+	 * @param bez Bezeichnung fuer das Produkt
+	 * @param gewicht fuer das Produkt
 	 */
 	public void updateProdukt(String bez, int gewicht) {
 		crud = con.prepareStmnt("UPDATE Produkt SET bez = ? WHERE gewicht = ?");
@@ -90,16 +90,16 @@ public class CRUD {
 	}
 
 	/**
-	 * DELETE - Ersetzt den Platzhalter mit den Parametern und führt das Prepared Statement aus.
-	 * @param key Bezeichnung für das Produkt
+	 * DELETE - Ersetzt den Platzhalter mit den Parametern und fuehrt das Prepared Statement aus.
+	 * @param key Bezeichnung fuer das Produkt
 	 */
 	public void deleteProdukt(int key) {
 		crud = con.prepareStmnt("DELETE FROM Produkt WHERE bez = ?");
 		try {
-			crud.setString(1, key);
-			delete.execute();
+			crud.setInt(1, key);
+			crud.execute();
 		} catch (SQLException e) {
-			System.err.println("Löschen eines Produktes fehlgeschlagen!");
+			System.err.println("Loeschen eines Produktes fehlgeschlagen!");
 			System.err.println(e.getMessage());
 		}
 	}
