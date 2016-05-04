@@ -1,5 +1,13 @@
 import org.apache.commons.cli.*;
 
+/**
+ * @author Seyyid Tiryaki
+ * @version 2016-5-4
+ * Diese Klasse übernimmt CLI-Argumente und stellt diese
+ * mit Hilfe von getter-Methoden zur Verfügung
+
+ */
+
 public class Parser {
 
 	private Options opt;
@@ -13,7 +21,7 @@ public class Parser {
 	}
 
     /**
-     *  Erstellt die Optionen f�r Parametereingaben
+     *  Erstellt die Optionen fuer Parametereingaben
      */
 	public void setUpOptions() {
         opt = new Options();
